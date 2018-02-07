@@ -6,7 +6,7 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.awt.image.BufferedImage;
 import javax.imageio.ImageIO;
-public class imagereading {
+public class imagereading extends text{
 
 	public static void Writing_pixel(File f,BufferedImage bf) {
 		try {
@@ -14,17 +14,16 @@ public class imagereading {
 			int height=bf.getHeight();
 			 for(int y = 0; y < height; y++){ //making disorted pixel
 			       for(int x = 0; x < width; x++){
-			    	   
-			         int a = (int)(Math.random()*256); //alpha
-			         int r = (int)(Math.random()*256); //red
-			         int g = (int)(Math.random()*256); //green
-			         int b = (int)(Math.random()*256); //blue
-			 
-			         int p = (a<<24) | (r<<16) | (g<<8) | b; //pixel
+			    	   int aplha=bf.getRGB(x, y);  
+			    	   int red=bf.getRGB(x, y);
+			    	   int green=bf.getRGB(x, y);
+			    	   int blue=bf.getRGB(x, y);
+			    	   int p = (aplha<<24) | (red<<16) | (green<<8) | blue; //pixel
 			 
 			         bf.setRGB(x, y, p);
 			       }
 			     }
+			 
 		     ImageIO.write(bf, "png", f);
 		}catch (IOException e) {
 			e.printStackTrace();
@@ -42,7 +41,7 @@ public class imagereading {
 		BufferedImage bf=null;
 		File f,f1=null;
 		try {
-			f=new File("C:\\Users\\lenovo\\Desktop\\doc\\New folder\\firewatch.png");
+			f=new File("C:\\Users\\lenovo\\Desktop\\images.png");
 			f1=new File("C:\\Users\\lenovo\\Desktop\\output.png");
 			bf=new BufferedImage(width,height,BufferedImage.TYPE_INT_ARGB);
 			bf=ImageIO.read(f);
@@ -53,6 +52,10 @@ public class imagereading {
 			}catch(IOException e) {
 				System.out.println("Error"+e);
 			}
-		}
-	
+	TextInBinary();
 	}
+}
+		
+	
+	
+	
